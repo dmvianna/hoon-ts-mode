@@ -29,7 +29,8 @@
 
    :feature 'typeCast
    :language 'hoon
-   '((typeCast (_)) @font-lock-type-face)
+   '(((typeCast (_)) @font-lock-type-face)
+     (addCell (_) "+" (_)) @font-lock-type-face)
 
    :feature 'zapzap
    :language 'hoon
@@ -49,10 +50,13 @@
    :language 'hoon
    '((gateCall) @font-lock-constant-call-face)
 
+   :feature 'punctuation
+   :language 'hoon
+   '((lark) @font-lock-misc-punctuation-face)
+
    :feature 'constants
    :language 'hoon
    '((mold) @font-lock-keyword-face
-     (lark) @font-lock-misc-punctuation-face
      (date) @font-lock-keyword-face
      (number) @font-lock-keyword-face
      (boolean) @font-lock-keyword-face
@@ -72,7 +76,7 @@
                 '((comment string aura)
                   (zapzap rune)
                   (constants lusNames shadow)
-                  (gateCal typeCast)))
+                  (gateCal typeCast punctuation)))
 
     (setq-local treesit-font-lock-settings hoon--treesit-font-lock-setting)
     ;; - treesit-simple-indent-rules
